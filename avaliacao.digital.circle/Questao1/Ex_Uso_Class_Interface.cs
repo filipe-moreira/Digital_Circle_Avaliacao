@@ -7,12 +7,30 @@
         void Deletar(T entity);
     }    
 
+    public class GenericRepository<T> : IGenericRepository<T> where T : Entity
+    {
+        public void Adicionar(T entity)
+        {
+            throw new NotImplementedException();
+        }
+        public void Deletar(T entity)
+        {
+            throw new NotImplementedException();
+        }
+        public void Atualizar(T entity)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
     public interface IProdutoRepository : IGenericRepository<Produto>
     {
         Produto ObterPorDescricao(string descricao);
     }
-    
-    public class ProdutoRepository : IProdutoRepository
+        
+
+    public class ProdutoRepository : GenericRepository<Produto>, IProdutoRepository
     {
         public Produto ObterPorDescricao(string descricao)
         {
